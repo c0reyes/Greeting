@@ -1,5 +1,9 @@
 pipeline {
-    agent none
+    agent {
+        docker {
+            label 'docker'
+        }
+    }
     stages {
         stage('Build') {
             agent {
@@ -39,8 +43,8 @@ pipeline {
             }
             post{
                 cleanup {
-                echo "CLEAN"
-                cleanWs()
+                    echo "Clean"
+                    cleanWs()
                 }
             }
         }
