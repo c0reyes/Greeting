@@ -8,6 +8,7 @@ pipeline {
                 docker {
                     image 'maven:3-alpine' 
                     args '-v /root/.m2:/root/.m2' 
+                    label 'docker'
                 }
             } 
             steps {
@@ -24,6 +25,7 @@ pipeline {
             agent {
                 docker {
                     image 'openjdk:8' 
+                    label 'docker'
                 }
             } 
             steps {
