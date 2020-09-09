@@ -1,11 +1,12 @@
 pipeline {
-    agent { label 'docker' }
+    agent none
     stages {
         stage('Build') {
             agent {
                 docker {
                     image 'maven:3-alpine' 
                     args '-v /root/.m2:/root/.m2' 
+                    label 'docker'
                 }
             } 
             steps {
@@ -20,12 +21,11 @@ pipeline {
         }
         stage('Dockerfile') {
             agent {
-                docker {
-                    image 'openjdk:8'
-                }
+                label 'docker'
+                docker 'openjdk:8' 
             } 
             steps {
-                script{
+                script {
                     unstash 'jar'
                     docker.withRegistry('https://registry:5000') {
                         def customImage = docker.build("greeting:${env.BUILD_ID}")
