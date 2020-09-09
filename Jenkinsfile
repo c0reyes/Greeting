@@ -4,13 +4,10 @@ pipeline {
     }
     stages {
         stage('Build') {
-            agent {
                 docker {
                     image 'maven:3-alpine' 
                     args '-v /root/.m2:/root/.m2' 
-                    label 'docker'
                 }
-            } 
             steps {
                 sh 'mvn -B -DskipTests clean package' 
                 stash name: "jar", includes: "target/**/*.jar"
@@ -22,12 +19,9 @@ pipeline {
             }
         }
         stage('Dockerfile') {
-            agent {
                 docker {
                     image 'openjdk:8' 
-                    label 'docker'
                 }
-            } 
             steps {
                 script{
                     unstash 'jar'
