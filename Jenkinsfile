@@ -22,7 +22,7 @@ pipeline {
         stage('Dockerfile') {
             agent {
                 docker {
-                    image 'openjdk:3-alpine' 
+                    image 'openjdk:8' 
                     label 'docker'
                 }
             } 
