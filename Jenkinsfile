@@ -1,12 +1,11 @@
 pipeline {
-    agent none
+    agent { label 'docker' }
     stages {
         stage('Build') {
             agent {
                 docker {
                     image 'maven:3-alpine' 
                     args '-v /root/.m2:/root/.m2' 
-                    label 'docker'
                 }
             } 
             steps {
@@ -22,8 +21,7 @@ pipeline {
         stage('Dockerfile') {
             agent {
                 docker {
-                    image 'openjdk:8' 
-                    label 'docker'
+                    image 'openjdk:8'
                 }
             } 
             steps {
