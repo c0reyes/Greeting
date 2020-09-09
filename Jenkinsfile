@@ -29,14 +29,12 @@ pipeline {
             steps {
                 script{
                     unstash 'jar'
-                    node('docker') {
                     docker.withRegistry('https://registry:5000') {
                         def customImage = docker.build("greeting:${env.BUILD_ID}")
                         customImage.push()
                         def customImageLatest = docker.build("greeting:latest")
                         customImageLatest.push()
                     }
-                }
                 }
             }
             post{
