@@ -20,10 +20,7 @@ pipeline {
             }
         }
         stage('Dockerfile') {
-            agent {
-                label 'docker'
-                docker 'openjdk:8' 
-            } 
+            agent { label 'docker' } 
             steps {
                 script {
                     unstash 'jar'
