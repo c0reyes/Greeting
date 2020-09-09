@@ -21,9 +21,9 @@ pipeline {
         }
         stage('Dockerfile') {
             agent {
+                label 'docker'
                 docker {
                     image 'openjdk:8' 
-                    label 'docker'
                 }
             } 
             steps {
