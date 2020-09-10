@@ -32,12 +32,6 @@ pipeline {
                     }
                 }
             }
-            post{
-                cleanup {
-                    echo "Clean"
-                    cleanWs()
-                }
-            }
         }
     }
 }
