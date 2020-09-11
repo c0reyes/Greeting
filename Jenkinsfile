@@ -40,6 +40,7 @@ pipeline {
             agent { label 'docker' }
             steps {
                 withKubeConfig([credentialsId: 'kubeconfig']) {
+                    sh 'ls -a'
                     sh 'kubectl apply -f deployment.yml'
                     sh 'kubectl apply -f service.ytml'
                     sh 'kubectl apply -f ingress.ytml'
