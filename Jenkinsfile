@@ -39,7 +39,7 @@ pipeline {
                 withKubeConfig([credentialsId: 'kubeconfig']) {
                     sh 'kubectl apply -f deployment.yml'
                     sh 'kubectl apply -f service.yml'
-                    sh 'kubectl apply -f ingress.ytml'
+                    sh 'kubectl apply -f ingress.yml'
                 }
             }
         }
