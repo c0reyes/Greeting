@@ -16,8 +16,5 @@ spec:
     spec:
       containers:
       - name: greeting-ctr
-        image: registry:5043/greeting/latest
+        image: registry:5043/greeting
         imagePullPolicy: Always
-        ports:
-        - name: httpport
-          containerPort: 8080
