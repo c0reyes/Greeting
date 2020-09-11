@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: greeting-dc
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: greeting
+    spec:
+      containers:
+      - name: greeting-ctr
+        image: registry:5043:/greeting/latest
+        imagePullPolicy: Always
+        ports:
+        - name: httpport
+          containerPort: 8080
