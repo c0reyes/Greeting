@@ -4,10 +4,13 @@ metadata:
   name: greeting-dc
 spec:
   replicas: 1
+  selector:
+      matchLabels:
+        name: greeting
   template:
     metadata:
       labels:
-        app: greeting
+        name: greeting
     spec:
       containers:
       - name: greeting-ctr
