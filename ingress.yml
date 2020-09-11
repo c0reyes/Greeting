@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   labels:
     app: greeting
-  name: greeting-ingress
+  name: greeting
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /$1
 spec:
@@ -13,5 +13,5 @@ spec:
           paths:
           - path: /
             backend:
-                serviceName: greeting-svc
+                serviceName: greeting
                 servicePort: 8080

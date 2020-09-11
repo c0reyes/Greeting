@@ -3,7 +3,7 @@ kind: Service
 metadata:
     labels:
       app: greeting
-    name: greeting-svc
+    name: greeting
 spec:
     selector:
         app: greeting
