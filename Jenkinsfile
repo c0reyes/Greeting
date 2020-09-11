@@ -36,7 +36,7 @@ pipeline {
         stage('Deployment') {
             agent { label 'docker' }
             steps {
-                withKubeConfig([credentialsId: 'kubernetes']) {
+                withKubeConfig([credentialsId: 'kubeconfig']) {
                     sh 'kubectl apply -f deployment.yml'
                     sh 'kubectl apply -f service.ytml'
                     sh 'kubectl apply -f ingress.ytml'
