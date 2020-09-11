@@ -9,9 +9,9 @@ metadata:
 spec:
     rules:
     - host: greeting.info
-        http:
-            paths:
-                - path: /
-                  backend:
-                      serviceName: greeting-svc
-                      servicePort: 8080
+      http:
+          paths:
+          - path: /
+            backend:
+                serviceName: greeting-svc
+                servicePort: 8080
