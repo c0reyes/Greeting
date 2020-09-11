@@ -16,5 +16,5 @@ spec:
     spec:
       containers:
       - name: greeting-ctr
-        image: host.minikube.internal:5043/greeting
+        image: host.minikube.internal:5000/greeting
         imagePullPolicy: Always
