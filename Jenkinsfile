@@ -16,6 +16,9 @@ pipeline {
             post {
                 success {
                     archiveArtifacts artifacts: 'target/**/*.jar', fingerprint: true
+                    archiveArtifacts artifacts: 'deployment.yml', fingerprint: true
+                    archiveArtifacts artifacts: 'service.yml', fingerprint: true
+                    archiveArtifacts artifacts: 'ingress.yml', fingerprint: true
                 }
             }
         }
