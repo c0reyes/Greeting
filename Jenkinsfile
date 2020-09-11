@@ -35,10 +35,12 @@ pipeline {
         }
         stage('Deployment') {
             agent { label 'docker' }
-            withKubeConfig([credentialsId: 'kubernetes']) {
-                sh 'kubectl apply -f deployment.yml'
-                sh 'kubectl apply -f service.ytml'
-                sh 'kubectl apply -f ingress.ytml'
+            steps {
+                withKubeConfig([credentialsId: 'kubernetes']) {
+                    sh 'kubectl apply -f deployment.yml'
+                    sh 'kubectl apply -f service.ytml'
+                    sh 'kubectl apply -f ingress.ytml'
+                }
             }
         }
     }
