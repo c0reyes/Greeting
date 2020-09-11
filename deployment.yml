@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   labels:
     app: greeting
-  name: greeting-dc
+  name: greeting
 spec:
   replicas: 1
   selector:
@@ -15,6 +15,6 @@ spec:
         name: greeting
     spec:
       containers:
-      - name: greeting-ctr
+      - name: greeting
         image: host.minikube.internal:5000/greeting
         imagePullPolicy: Always
