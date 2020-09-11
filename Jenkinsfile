@@ -4,13 +4,13 @@ pipeline {
         stage('Build') {
             agent {
                 docker {
-                    image 'maven:3-alpine' 
-                    args '-v /root/.m2:/root/.m2' 
+                    image 'maven:3-alpine'
+                    args '-v /root/.m2:/root/.m2'
                     label 'docker'
                 }
-            } 
+            }
             steps {
-                sh 'mvn -B -DskipTests clean package' 
+                sh 'mvn -B -DskipTests clean package'
                 stash name: "jar", includes: "target/**/*.jar"
             }
             post {
@@ -20,11 +20,11 @@ pipeline {
             }
         }
         stage('Dockerfile') {
-            agent { label 'docker' } 
+            agent { label 'docker' }
             steps {
                 script {
                     unstash 'jar'
-                    docker.withRegistry('https://172.17.0.1:5043') {
+                    docker.withRegistry('https://registry:5043') {
                         def customImage = docker.build("greeting:${env.BUILD_ID}")
                         customImage.push()
                         def customImageLatest = docker.build("greeting:latest")
