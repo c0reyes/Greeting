@@ -24,7 +24,7 @@ pipeline {
             steps {
                 script {
                     unstash 'jar'
-                    docker.withRegistry('https://nginx:5043') {
+                    docker.withRegistry('https://registry:5043') {
                         def customImage = docker.build("greeting:${env.BUILD_ID}")
                         customImage.push()
                         def customImageLatest = docker.build("greeting:latest")
