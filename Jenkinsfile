@@ -1,7 +1,7 @@
 pipeline {
     agent none
     stages {
-        stage('Build') {
+        stage('Building package') {
             agent {
                 docker {
                     image 'maven:3-alpine'
@@ -19,21 +19,19 @@ pipeline {
                 }
             }
         }
-        stage('Dockerfile') {
+        stage('Building image') {
             agent { label 'docker' }
             steps {
                 script {
                     unstash 'jar'
                     docker.withRegistry('https://registry:5043') {
-                        def customImage = docker.build("greeting:${env.BUILD_ID}")
-                        customImage.push()
                         def customImageLatest = docker.build("greeting:latest")
                         customImageLatest.push()
                     }
                 }
             }
         }
-        stage('Deployment') {
+        stage('Deploy image') {
             agent { label 'docker' }
             steps {
                 withKubeConfig([credentialsId: 'kubeconfig']) {
@@ -41,6 +39,12 @@ pipeline {
                     sh 'kubectl apply -f service.yml'
                     sh 'kubectl apply -f ingress.yml'
                 }
+            }
+        }
+        stage('Remove Unused docker image') {
+            agent { label 'docker' }
+            steps{
+                sh "docker rmi registry:5043/greeting:latest"
             }
         }
     }
