@@ -6,7 +6,7 @@ metadata:
       app: greeting
 spec:
     selector:
-        app: greeting
+        name: greeting
     ports:
         - port: 8080
           protocol: TCP
