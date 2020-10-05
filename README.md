@@ -7,7 +7,7 @@ This example it's base on [rest-service](https://spring.io/guides/gs/rest-servic
 Clone to your machine if you want or use the repository from GitHub. Create new repository on Gitea.
 
 ```
-git clone ....
+git clone https://github.com/c0reyes/Greeting.git
 ```
 
 Change remote url to local Gitea.
