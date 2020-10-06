@@ -4,7 +4,7 @@ This example it's base on [rest-service](https://spring.io/guides/gs/rest-servic
 
 ## Clone Repository
 
-Clone to your machine if you want or use the repository from GitHub. Create new repository on Gitea.
+Clone to your machine, if you want or use the repository from GitHub. Create new repository on Gitea.
 
 ```
 git clone https://github.com/c0reyes/Greeting.git
@@ -25,6 +25,22 @@ git push
     - New Pipeline
     - Select Git
     - Write repository url and Create pipline
+
+## Kubernetes Credentials
+
+- Generate kubeconfig
+
+```
+kubectl config view --flatten > kubeconfig.txt
+```
+
+- Configure credentials
+    - Go to Jenkins pipeline project -> Credentials
+    - Add Credentials
+        - **Kind:** Secret file
+        - **File:** (upload kubeconfig.txt file)
+        - **ID:** name
+        - **Description:** optional
 
 ## Test
 
