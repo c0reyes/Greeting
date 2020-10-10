@@ -16,5 +16,5 @@ spec:
     spec:
       containers:
       - name: greeting
-        image: host.minikube.internal:5000/greeting/latest
+        image: host.minikube.internal:5000/greeting
         imagePullPolicy: Always
