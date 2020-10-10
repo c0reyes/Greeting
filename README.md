@@ -35,6 +35,7 @@ git push
 ```
 kubectl config view --flatten > kubeconfig.txt
 ```
+Modify the server line to: server: https://kubernetes:8443
 
 - Configure credentials
     - Go to Jenkins pipeline project -> Credentials
